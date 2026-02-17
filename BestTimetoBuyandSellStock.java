@@ -17,23 +17,25 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 
 
 public static int maxProfit(int[] prices) {
-        int min = Integer.MAX_VALUE;
-        int maxProfit = 0;
-        for(int i=0;i<prices.length;i++){
-            if(prices[i]<min){
-                min = prices[i];
+        //at the beginning the minimum price is the first price
+        int buy_price=prices[0];
+        //at the beginning the minimum profit is zero
+        int profit=0;
+        for(int i=1;i<prices.length;i++){
+            //if the current price is less update the buy_price
+            if(prices[i]<buy_price){
+                buy_price=prices[i];
 
             }
-            int currentprofit = prices[i]-min;
-            if(currentprofit>maxProfit){
-                maxProfit = currentprofit;
-
+            else{
+                int current_profit=prices[i]-buy_price;
+                profit=Math.max(current_profit,profit);
             }
         }
-        return maxProfit;
-    
+        return profit;
         }
 public static void main(String[] args) {
     int[] nums = {7,1,5,3,6,4};
     System.out.println(maxProfit(nums));
 }
+
