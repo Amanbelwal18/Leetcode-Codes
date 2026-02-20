@@ -15,16 +15,27 @@ Explanation: The square root of 8 is 2.82842..., and since we round it down to t
 */
 
 public class SQRT {
-    public int mySqrt(int x) {
+    public int mySqrt1(int x) {
         double ans=Math.sqrt(x);
         return (int)ans;
     }
+    public int mySqrt2(int x) {
+        if(x<2){
+            return x;
+        }
+        long i=1;
+        while(i*i<=x){
+            i++;
+        }
+        return (int)(i-1);
+    }
+
     public static void main(String[] args) {
         SQRT S = new SQRT();
         int x1 = 4;
         int x2 = 10;
-        System.out.println(S.mySqrt(x1));
-        System.out.println(S.mySqrt(x2));
+        System.out.println(S.mySqrt1(x1));
+        System.out.println(S.mySqrt2(x2));
     }
     
 }
